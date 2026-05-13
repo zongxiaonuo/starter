@@ -32,3 +32,5 @@ coverage/
 
 # Misc
 .cache/
+.app.pid
+app.log

@@ -3,262 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>企业 IT 运维设备管理系统</title>
-  <link rel="stylesheet" href="/src/styles/main.css">
+  <title>TypeScript 学习项目</title>
+  <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
-  <div id="app">
+  <div class="container">
     <header class="header">
-      <h1>企业 IT 运维设备管理系统</h1>
-      <div class="header-info">
-        <span id="current-time"></span>
-      </div>
+      <h1>🎓 TypeScript 学习项目</h1>
+      <p class="subtitle">从零开始学习 TypeScript，循序渐进掌握核心概念</p>
     </header>
-
-    <main class="main-container">
+    
+    <div class="main-content">
       <aside class="sidebar">
-        <nav class="nav-menu">
-          <a href="#" class="nav-item active" data-view="dashboard">仪表盘</a>
-          <a href="#" class="nav-item" data-view="devices">设备管理</a>
-          <a href="#" class="nav-item" data-view="monitoring">监控中心</a>
-          <a href="#" class="nav-item" data-view="alerts">告警管理</a>
-        </nav>
+        <h2>📚 课程目录</h2>
+        <nav id="lesson-nav"></nav>
       </aside>
-
-      <section class="content">
-        <div id="dashboard-view" class="view active">
-          <div class="stats-cards">
-            <div class="stat-card online">
-              <div class="stat-icon">🟢</div>
-              <div class="stat-info">
-                <h3>在线设备</h3>
-                <p class="stat-number" id="online-count">0</p>
-              </div>
-            </div>
-            <div class="stat-card warning">
-              <div class="stat-icon">🟡</div>
-              <div class="stat-info">
-                <h3>告警设备</h3>
-                <p class="stat-number" id="warning-count">0</p>
-              </div>
-            </div>
-            <div class="stat-card offline">
-              <div class="stat-icon">🔴</div>
-              <div class="stat-info">
-                <h3>离线设备</h3>
-                <p class="stat-number" id="offline-count">0</p>
-              </div>
-            </div>
-            <div class="stat-card total">
-              <div class="stat-icon">📊</div>
-              <div class="stat-info">
-                <h3>设备总数</h3>
-                <p class="stat-number" id="total-count">0</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="section-title">
-            <h2>设备概览</h2>
-          </div>
-          <div class="device-table-container">
-            <table class="device-table" id="device-table">
-              <thead>
-                <tr>
-                  <th>设备名称</th>
-                  <th>IP 地址</th>
-                  <th>设备类型</th>
-                  <th>状态</th>
-                  <th>最后检测</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody id="device-tbody">
-              </tbody>
-            </table>
+      
+      <main class="content">
+        <div id="lesson-content">
+          <div class="welcome-message">
+            <h2>👋 欢迎学习 TypeScript！</h2>
+            <p>请从左侧菜单选择一个章节开始学习。</p>
+            <p>每个章节都包含详细的代码示例和解释。</p>
           </div>
         </div>
-
-        <div id="devices-view" class="view">
-          <div class="section-title">
-            <h2>设备管理</h2>
-            <button class="btn-primary" id="add-device-btn">+ 添加设备</button>
-          </div>
-          <div class="search-bar">
-            <input type="text" id="search-input" placeholder="搜索设备名称或 IP...">
-            <select id="filter-status">
-              <option value="">全部状态</option>
-              <option value="online">在线</option>
-              <option value="warning">告警</option>
-              <option value="offline">离线</option>
-            </select>
-          </div>
-          <div class="device-table-container">
-            <table class="device-table">
-              <thead>
-                <tr>
-                  <th>设备名称</th>
-                  <th>IP 地址</th>
-                  <th>设备类型</th>
-                  <th>位置</th>
-                  <th>状态</th>
-                  <th>最后检测</th>
-                  <th>操作</th>
-                </tr>
-              </thead>
-              <tbody id="devices-tbody">
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div id="monitoring-view" class="view">
-          <div class="section-title">
-            <h2>监控中心</h2>
-          </div>
-          <div class="monitoring-grid">
-            <div class="monitor-panel">
-              <h3>CPU 使用率</h3>
-              <div class="monitor-chart" id="cpu-chart">
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 45%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 62%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 38%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 75%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 55%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 68%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="monitor-panel">
-              <h3>内存使用率</h3>
-              <div class="monitor-chart" id="memory-chart">
-                <div class="chart-bar">
-                  <div class="chart-fill warning" style="height: 72%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill warning" style="height: 68%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 55%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 60%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill warning" style="height: 78%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 65%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="monitor-panel">
-              <h3>磁盘使用率</h3>
-              <div class="monitor-chart" id="disk-chart">
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 35%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 42%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 38%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 45%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 40%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 43%;"></div>
-                </div>
-              </div>
-            </div>
-            <div class="monitor-panel">
-              <h3>网络流量</h3>
-              <div class="monitor-chart" id="network-chart">
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 52%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 48%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 58%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 62%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 55%;"></div>
-                </div>
-                <div class="chart-bar">
-                  <div class="chart-fill" style="height: 50%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="alerts-view" class="view">
-          <div class="section-title">
-            <h2>告警管理</h2>
-          </div>
-          <div class="alerts-list" id="alerts-list">
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <div id="add-device-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal">&times;</span>
-      <h2>添加新设备</h2>
-      <form id="add-device-form">
-        <div class="form-group">
-          <label for="device-name">设备名称</label>
-          <input type="text" id="device-name" required>
-        </div>
-        <div class="form-group">
-          <label for="device-ip">IP 地址</label>
-          <input type="text" id="device-ip" required>
-        </div>
-        <div class="form-group">
-          <label for="device-type">设备类型</label>
-          <select id="device-type" required>
-            <option value="server">服务器</option>
-            <option value="switch">交换机</option>
-            <option value="router">路由器</option>
-            <option value="firewall">防火墙</option>
-            <option value="workstation">工作站</option>
-            <option value="other">其他</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="device-location">位置</label>
-          <input type="text" id="device-location" required>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn-primary">添加</button>
-          <button type="button" class="btn-secondary close-modal-btn">取消</button>
-        </div>
-      </form>
+      </main>
     </div>
   </div>
-
-  <script type="module" src="/src/main.ts"></script>
+  
+  <script type="module" src="/src/index.ts"></script>
 </body>
 </html>
