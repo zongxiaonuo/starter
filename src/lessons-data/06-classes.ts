@@ -11,7 +11,10 @@ export const lesson06: Lesson = {
     {
       title: '6.1 基本类',
       description: 'TypeScript 在 JavaScript 的 class 基础上增加了类型注解、访问修饰符等。',
-      code: `class Person {
+      code: `// ========================================
+// 定义 Person 类
+// ========================================
+class Person {
   // 字段必须先声明类型
   name: string;
   age: number;
@@ -28,6 +31,9 @@ export const lesson06: Lesson = {
   }
 }
 
+// ========================================
+// 使用 Person 类
+// ========================================
 const alice = new Person("Alice", 25);
 console.log(alice.greet());`,
       output: "Hi, I'm Alice, 25 years old.",
@@ -35,7 +41,10 @@ console.log(alice.greet());`,
     {
       title: '6.2 访问修饰符与参数属性',
       description: 'public（默认公开）、private（仅类内部）、protected（类和子类）。在构造函数参数前加修饰符可自动声明并赋值字段。',
-      code: `class BankAccount {
+      code: `// ========================================
+// 定义 BankAccount 类
+// ========================================
+class BankAccount {
   public owner: string;       // 任何地方都能访问
   private balance: number;    // 只有这个类自己能访问
   protected bankName: string; // 自身 + 子类能访问
@@ -55,7 +64,9 @@ console.log(alice.greet());`,
   }
 }
 
+// ========================================
 // 参数属性 - 简写
+// ========================================
 class Product {
   constructor(
     public name: string,
@@ -68,6 +79,9 @@ class Product {
   }
 }
 
+// ========================================
+// 使用类
+// ========================================
 const account = new BankAccount("Alice", 1000);
 account.deposit(500);
 console.log(account.getBalance());
@@ -79,7 +93,9 @@ console.log(apple.name, apple.price, apple.isAvailable());`,
     {
       title: '6.3 继承与抽象类',
       description: '使用 extends 实现继承，使用 abstract 定义抽象类（不能直接 new，子类必须实现抽象方法）。',
-      code: `// 继承
+      code: `// ========================================
+// 继承
+// ========================================
 class Animal {
   constructor(public name: string) {}
 
@@ -99,7 +115,9 @@ class Dog extends Animal {
   }
 }
 
+// ========================================
 // 抽象类
+// ========================================
 abstract class Shape {
   abstract area(): number;
 
@@ -113,6 +131,9 @@ class Square extends Shape {
   area(): number { return this.size * this.size; }
 }
 
+// ========================================
+// 使用类
+// ========================================
 const buddy = new Dog("Buddy");
 buddy.bark();
 buddy.move(10);
@@ -124,7 +145,9 @@ sq.describe();`,
     {
       title: '6.4 实现接口、静态成员与 getter/setter',
       description: '类可以使用 implements 实现接口；static 属于类本身；get/set 提供属性访问器。',
-      code: `// 实现接口
+      code: `// ========================================
+// 实现接口
+// ========================================
 interface Printable { print(): void; }
 interface Saveable { save(): void; }
 
@@ -134,13 +157,17 @@ class Document implements Printable, Saveable {
   save(): void { console.log(\`保存: \${this.content}\`); }
 }
 
+// ========================================
 // 静态成员
+// ========================================
 class MathUtil {
   static PI = 3.14159;
   static square(x: number): number { return x * x; }
 }
 
+// ========================================
 // getter / setter
+// ========================================
 class Temperature {
   private _celsius: number = 0;
 
@@ -152,6 +179,9 @@ class Temperature {
   get fahrenheit(): number { return this._celsius * 9 / 5 + 32; }
 }
 
+// ========================================
+// 使用类
+// ========================================
 const doc = new Document("Hello");
 doc.print();
 

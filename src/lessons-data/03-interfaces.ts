@@ -11,7 +11,9 @@ export const lesson03: Lesson = {
     {
       title: '3.1 接口基础',
       description: '接口用于定义对象的形状，描述对象应该有哪些属性和方法。',
-      code: `// 定义接口
+      code: `// ========================================
+// 定义接口
+// ========================================
 interface User {
   id: number;
   name: string;
@@ -19,7 +21,9 @@ interface User {
   isActive: boolean;
 }
 
+// ========================================
 // 使用接口
+// ========================================
 const user: User = {
   id: 1,
   name: "Alice",
@@ -27,7 +31,9 @@ const user: User = {
   isActive: true
 };
 
+// ========================================
 // 接口也可以描述函数类型
+// ========================================
 interface GreetFunction {
   (name: string): string;
 }
@@ -38,13 +44,19 @@ const greet: GreetFunction = (name) => \`Hello, \${name}\`;`,
     {
       title: '3.2 可选属性和只读属性',
       description: '接口支持可选属性和只读属性。',
-      code: `interface Config {
+      code: `// ========================================
+// 定义配置接口
+// ========================================
+interface Config {
   readonly apiKey: string;      // 只读属性
   endpoint: string;
   timeout?: number;             // 可选属性
   debugMode?: boolean;
 }
 
+// ========================================
+// 使用配置接口
+// ========================================
 const config: Config = {
   apiKey: "secret-123",
   endpoint: "https://api.example.com"
@@ -58,7 +70,9 @@ console.log(config.apiKey);
     {
       title: '3.3 索引签名',
       description: '索引签名用于描述通过索引得到的类型。',
-      code: `// 字符串索引签名
+      code: `// ========================================
+// 字符串索引签名
+// ========================================
 interface StringDictionary {
   [key: string]: string;
 }
@@ -69,7 +83,9 @@ const colors: StringDictionary = {
   blue: "#0000ff"
 };
 
+// ========================================
 // 数字索引签名
+// ========================================
 interface NumberArray {
   [index: number]: number;
 }
@@ -83,19 +99,25 @@ console.log(scores[0]);`,
     {
       title: '3.4 接口继承',
       description: '接口可以继承其他接口，实现接口的复用和扩展。',
-      code: `// 基础接口
+      code: `// ========================================
+// 基础接口
+// ========================================
 interface Person {
   name: string;
   age: number;
 }
 
+// ========================================
 // 继承接口
+// ========================================
 interface Employee extends Person {
   employeeId: number;
   department: string;
 }
 
+// ========================================
 // 使用继承后的接口
+// ========================================
 const employee: Employee = {
   name: "Bob",
   age: 30,
@@ -103,7 +125,9 @@ const employee: Employee = {
   department: "Engineering"
 };
 
+// ========================================
 // 多继承
+// ========================================
 interface Manager extends Employee {
   teamSize: number;
 }

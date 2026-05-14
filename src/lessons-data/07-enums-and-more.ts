@@ -11,7 +11,9 @@ export const lesson07: Lesson = {
     {
       title: '7.1 数字枚举与字符串枚举',
       description: '枚举（enum）用于定义一组命名常量。数字枚举默认从 0 递增，字符串枚举调试时更直观（推荐）。',
-      code: `// 数字枚举
+      code: `// ========================================
+// 数字枚举
+// ========================================
 enum Direction {
   Up,    // 0
   Down,  // 1
@@ -22,14 +24,18 @@ enum Direction {
 console.log(Direction.Up);
 console.log(Direction[0]); // 反向映射
 
+// ========================================
 // 指定起始值
+// ========================================
 enum StatusCode {
   OK = 200,
   BadRequest = 400,
   NotFound = 404,
 }
 
+// ========================================
 // 字符串枚举（推荐）
+// ========================================
 enum LogLevel {
   Info = "INFO",
   Warn = "WARN",
@@ -47,7 +53,9 @@ log(LogLevel.Error, "出错了");`,
     {
       title: '7.2 typeof 与 as const',
       description: 'typeof 可以从一个值拿到它的类型；as const 让对象/数组的字段被推断为字面量类型并变为只读。',
-      code: `// typeof 类型操作符
+      code: `// ========================================
+// typeof 类型操作符
+// ========================================
 const config = {
   host: "localhost",
   port: 3000,
@@ -63,7 +71,9 @@ const newConfig: Config = {
   debug: false,
 };
 
+// ========================================
 // as const - 字面量推断
+// ========================================
 const obj1 = { name: "Alice", role: "admin" };
 // obj1.role 的类型是 string
 
@@ -80,7 +90,10 @@ console.log(obj2.role);`,
     {
       title: '7.3 可选链 ?. 与空值合并 ??',
       description: '?. 在某段为 null/undefined 时直接返回 undefined；?? 仅在左边为 null/undefined 时使用右边（区别于 ||）。',
-      code: `interface UserProfile {
+      code: `// ========================================
+// 定义接口
+// ========================================
+interface UserProfile {
   name: string;
   address?: {
     city?: string;
@@ -90,14 +103,20 @@ console.log(obj2.role);`,
 
 const profile: UserProfile = { name: "Alice" };
 
+// ========================================
 // 可选链
+// ========================================
 const city = profile.address?.city; // string | undefined
 
+// ========================================
 // 空值合并
+// ========================================
 const cityName = profile.address?.city ?? "未知城市";
 console.log(cityName);
 
+// ========================================
 // ?? 与 || 的区别
+// ========================================
 const count = 0;
 console.log(count || 10); // 10  ← 0 被当成假值
 console.log(count ?? 10); // 0   ← 0 是有效值`,
@@ -106,7 +125,9 @@ console.log(count ?? 10); // 0   ← 0 是有效值`,
     {
       title: '7.4 类型守卫与综合实战',
       description: '使用 `is` 关键字定义类型谓词函数，让 TypeScript 能在分支中精确推断类型。综合枚举、接口、类构建一个待办系统。',
-      code: `// 类型守卫
+      code: `// ========================================
+// 类型守卫
+// ========================================
 interface Cat { meow(): void; }
 interface Bird { fly(): void; }
 
@@ -114,7 +135,9 @@ function isCat(animal: Cat | Bird): animal is Cat {
   return (animal as Cat).meow !== undefined;
 }
 
+// ========================================
 // 综合实战：待办事项
+// ========================================
 enum TodoStatus {
   Pending = "PENDING",
   Done = "DONE",

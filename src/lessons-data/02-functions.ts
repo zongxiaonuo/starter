@@ -11,20 +11,28 @@ export const lesson02: Lesson = {
     {
       title: '2.1 函数类型注解',
       description: '可以为函数的参数和返回值添加类型注解。',
-      code: `// 函数声明
+      code: `// ========================================
+// 函数声明
+// ========================================
 function add(a: number, b: number): number {
   return a + b;
 }
 
+// ========================================
 // 函数表达式
+// ========================================
 let multiply = function(a: number, b: number): number {
   return a * b;
 };
 
+// ========================================
 // 箭头函数
+// ========================================
 let divide = (a: number, b: number): number => a / b;
 
+// ========================================
 // 调用函数
+// ========================================
 console.log(add(5, 3));      // 8
 console.log(multiply(4, 2)); // 8`,
       output: '8\n8',
@@ -32,7 +40,9 @@ console.log(multiply(4, 2)); // 8`,
     {
       title: '2.2 可选参数和默认参数',
       description: 'TypeScript 支持可选参数和带默认值的参数。',
-      code: `// 可选参数（使用 ?）
+      code: `// ========================================
+// 可选参数（使用 ?）
+// ========================================
 function greet(name: string, greeting?: string): string {
   if (greeting) {
     return \`\${greeting}, \${name}!\`;
@@ -40,7 +50,9 @@ function greet(name: string, greeting?: string): string {
   return \`Hello, \${name}!\`;
 }
 
+// ========================================
 // 默认参数
+// ========================================
 function createUser(
   name: string,
   role: string = "user"
@@ -56,12 +68,16 @@ console.log(createUser("Charlie"));`,
     {
       title: '2.3 剩余参数',
       description: '使用 ... 语法表示剩余参数，可以接收任意数量的参数。',
-      code: `// 剩余参数
+      code: `// ========================================
+// 剩余参数
+// ========================================
 function sum(...numbers: number[]): number {
   return numbers.reduce((total, num) => total + num, 0);
 }
 
+// ========================================
 // 结合普通参数和剩余参数
+// ========================================
 function concatenate(
   separator: string,
   ...strings: string[]
@@ -76,12 +92,16 @@ console.log(concatenate("-", "a", "b", "c"));`,
     {
       title: '2.4 函数重载',
       description: '函数重载允许同一个函数有多个函数类型定义。',
-      code: `// 函数重载定义
+      code: `// ========================================
+// 函数重载定义
+// ========================================
 function process(input: string): string;
 function process(input: number): number;
 function process(input: boolean): boolean;
 
+// ========================================
 // 函数实现
+// ========================================
 function process(input: string | number | boolean): string | number | boolean {
   if (typeof input === "string") {
     return input.toUpperCase();
